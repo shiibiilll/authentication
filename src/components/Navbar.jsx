@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../styles/navbar.css";
 
 const Navbar = () => {
@@ -6,24 +6,25 @@ const Navbar = () => {
 
   // Navigate to login page
   function handleLogout() {
-    navigate('/login');
-  };
+    localStorage.removeItem("isLoggedIn");
+    navigate("/login");
+  }
 
   return (
     <nav className="navbar">
       <ul className="nav-menu">
         <li className="nav-item">
-          <a href="/" className="nav-link">
+          <Link to="/" className="nav-link">
             Home
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a href="/contact" className="nav-link">
+          <Link to="/contact" className="nav-link">
             Contact
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <button  className="logout-btn" onClick={handleLogout}>
+          <button className="logout-btn" onClick={handleLogout}>
             Logout
           </button>
         </li>
